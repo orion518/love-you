@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>A Funny Question</title>
+		<style>
+			body {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				height: 100vh;
+				font-family: Arial, sans-serif;
+				text-align: center;
+				background-color: #f0f8ff;
+			}
+
+			h1 {
+				margin-bottom: 20px;
+				font-size: 24px;
+			}
+
+			.button-container {
+				display: flex;
+				gap: 20px;
+			}
+
+			button {
+				padding: 10px 20px;
+				font-size: 16px;
+				cursor: pointer;
+				transition: transform 0.3s;
+			}
+
+			#yesBtn {
+				background-color: #4CAF50;
+				color: white;
+			}
+
+			#noBtn {
+				background-color: #f44336;
+				color: white;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<h1 id="question">Do you think I'm the best friend ever? 😜</h1>
+		<div class="button-container">
+			<button id="yesBtn">Yes, obviously!</button>
+			<button id="noBtn">Nope</button>
+		</div>
+
+		<script>
+			const noButton = document.getElementById("noBtn");
+			const question = document.getElementById("question");
+
+			// List of funny questions to cycle through
+			const questions = [
+				"Are you sure you don't like me? 😆",
+				"Come on, just say yes! 😜",
+				"Wouldn't you agree I'm amazing? 😎",
+				"Admit it, I'm the best! 😇",
+				"Why so shy? Say yes already! 😅"
+			];
+
+			let questionIndex = 0;
+
+			// Make the "No" button move and change the question
+			noButton.addEventListener("mouseover", () => {
+				const randomX = Math.random() * (window.innerWidth - 100);
+				const randomY = Math.random() * (window.innerHeight - 100);
+				noButton.style.position = "absolute";
+				noButton.style.left = `${randomX}px`;
+				noButton.style.top = `${randomY}px`;
+
+				// Cycle through questions
+				question.innerText = questions[questionIndex];
+				questionIndex = (questionIndex + 1) % questions.length;
+			});
+
+			// Show an alert when "Yes" is clicked
+			document.getElementById("yesBtn").onclick = function() {
+				alert("I knew it! 😊 You're awesome too!");
+			};
+		</script>
+
+	</body>
+
+</html>
